@@ -56,15 +56,15 @@
   <h2>Rock Paper Scissor</h2>
   <div class="flex">
     <div class="rock">
-      <img src="/images/rock-emoji.png" onclick="userInput ('rock');">
+      <img src="rock-emoji.png" onclick="userInput ('rock');">
       <p class="auto-text">Rock</p>
     </div>
     <div class="paper">
-      <img src="/images/paper-emoji.png" onclick="userInput ('paper');">
+      <img src="paper-emoji.png" onclick="userInput ('paper');">
       <p class="auto-text">Paper</p>
     </div>
     <div class="scissor">
-      <img src="/images/scissors-emoji.png" onclick="userInput ('scissor')">
+      <img src="scissors-emoji.png" onclick="userInput ('scissor')">
       <p class="auto-text">Scissor</p>
     </div>
   </div>
@@ -130,19 +130,19 @@
     
     function showResult (input,output) {
       if (input === 'rock')
-      document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="/images/rock-emoji.png">`;
+      document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="rock-emoji.png">`;
       
       else if (input === 'paper')
-        document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="/images/paper-emoji.png">`;
+        document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="paper-emoji.png">`;
       else
-        document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="/images/scissors-emoji.png">`;
+        document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="scissors-emoji.png">`;
       if (output === 'rock')
-        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="/images/rock-emoji.png">`;
+        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="rock-emoji.png">`;
       
       else if (output === 'paper')
-        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="/images/paper-emoji.png">`;
+        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="paper-emoji.png">`;
       else
-        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="/images/scissors-emoji.png">`;
+        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="scissors-emoji.png">`;
       document.querySelector('.score').innerHTML = `<br>You Won:${score.won} You loss:${score.lost} Tie:${score.tie}`;
     }
   </script>
