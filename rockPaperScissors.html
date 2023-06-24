@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rock Paper Scissor</title>
+  <style>
+    body{
+      background-color:black;
+      color:white;
+    }
+    .flex img{
+      border:1px solid white;
+      height:50px;
+      width:50px;
+      margin:20px;
+      border-radius:50px;
+      padding:20px;
+    }
+    .flex{
+      display:flex;
+    }
+    .div p{
+      width:30px;
+      margin:auto;
+    }
+    .rock .auto-text{
+      width:30px;
+      margin:auto;
+    }
+    .paper .auto-text{
+      width:35px;
+      margin:auto;
+    }
+    .scissor .auto-text {
+      width:45px;
+      margin: auto;
+    }
+    .resultImage{
+      position:relative;
+      top:5px;
+      width:30px;
+      height:30px;
+    }
+    .show{
+      display:flex;
+    }
+    .result,.result2{
+      margin:15px 15px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Rock Paper Scissor</h2>
+  <div class="flex">
+    <div class="rock">
+      <img src="/images/rock-emoji.png" onclick="userInput ('rock');">
+      <p class="auto-text">Rock</p>
+    </div>
+    <div class="paper">
+      <img src="/images/paper-emoji.png" onclick="userInput ('paper');">
+      <p class="auto-text">Paper</p>
+    </div>
+    <div class="scissor">
+      <img src="/images/scissors-emoji.png" onclick="userInput ('scissor')">
+      <p class="auto-text">Scissor</p>
+    </div>
+  </div>
+  <div class="show">
+  <div class="result"></div>
+  <div class="result2"></div>
+  </div>
+  <div class="score"></div>
+  <br
+  <button onclick='resetScore ();'>Reset Score</button>
+  <script>
+    let score = JSON.parse(localStorage.getItem('result'));
+    if (!score) score={
+      won: 0,
+      lost: 0,
+      tie: 0
+    };
+    let result = '';
+    function userInput (input) {
+    let output = computerOutput ();
+      if (input === output) {
+        result = 'Tie';
+        score.tie++;
+        showResult (input,output);
+      }
+      
+      else if ((input === 'rock' && output === 'scissor') ||
+      (input === 'paper' && output === 'rock') ||
+      (input === 'scissor' && output === 'paper') ) {
+        result = 'You Won'
+        score.won++;
+        showResult (input,output);
+      }
+      
+      else {
+        result = 'You lost';
+        score.lost++;
+        showResult (input,output);
+      }
+      localStorage.setItem('result',JSON.stringify(score));
+    }
+    
+    function computerOutput () {
+      let randomNumber = Math.random ();
+      if (randomNumber>=0 && randomNumber <(1/3))
+        return 'paper';
+        
+      else if (randomNumber>=(1/3) && randomNumber <(2/3))
+        return 'rock';
+        
+      else return 'scissor';
+    }
+    
+    function resetScore () {
+      score.won = 0;
+      score.lost = 0;
+      score.tie = 0;
+      localStorage.removeItem('result');
+      document.querySelector('.result').innerHTML = `<br><br>Score get reset`;
+      document.querySelector('.result2').innerHTML = '';
+      document.querySelector('.score').innerHTML = `<br>You Won:${score.won} You loss:${score.lost} Tie:${score.tie}`;
+    }
+    
+    function showResult (input,output) {
+      if (input === 'rock')
+      document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="/images/rock-emoji.png">`;
+      
+      else if (input === 'paper')
+        document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="/images/paper-emoji.png">`;
+      else
+        document.querySelector('.result').innerHTML = `You:<img class="resultImage" src="/images/scissors-emoji.png">`;
+      if (output === 'rock')
+        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="/images/rock-emoji.png">`;
+      
+      else if (output === 'paper')
+        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="/images/paper-emoji.png">`;
+      else
+        document.querySelector('.result2').innerHTML = `Computer:<img class="resultImage" src="/images/scissors-emoji.png">`;
+      document.querySelector('.score').innerHTML = `<br>You Won:${score.won} You loss:${score.lost} Tie:${score.tie}`;
+    }
+  </script>
+</body>
+
+</html>
