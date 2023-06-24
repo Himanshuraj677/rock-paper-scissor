@@ -64,7 +64,7 @@
       <p class="auto-text">Paper</p>
     </div>
     <div class="scissor">
-      <img src="scissors-emoji.png" onclick="userInput ('scissor')">
+      <img src="scissors-emoji.png" onclick="userInput ('scissor');">
       <p class="auto-text">Scissor</p>
     </div>
   </div>
@@ -74,7 +74,7 @@
   </div>
   <div class="score"></div>
   <br
-  
+  <button onclick="resetScore ();">Reset Score</button>
   <script>
     let score = JSON.parse(localStorage.getItem('result'));
     if (!score) score={
